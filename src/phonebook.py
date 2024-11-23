@@ -13,20 +13,28 @@ class Phonebook:
         if '#' in name:
             return 'Nome invalido'
         if '@' in name:
+            # BUG - Typo na string de retorno
             return 'Nme invalido'
         if '!' in name:
             return 'Nome invalido'
         if '$' in name:
+            # BUG - Typo na string de retorno
             return 'Nome invalio'
         if '%' in name:
             return 'Nome invalido'
 
-        if len(number) < 0:
+        # BUG - essa condicao nao valida a string recebida, teriamos que ser number <= 0
+        # Melhoria - Verificar quantidade minima para um numero de telefone, validar o ddd, pais, etc
+        # Melhoria  - Validar o tipo de variável recebida
+        if len(number) <0:
+            # BUG - Typo na string de retorno
             return 'Numero invalid'
+
 
         if name not in self.entries:
             self.entries[name] = number
 
+        # BUG -  Está retornando numero adicionado mesmo quando nenhum contato é adicionaddo.
         return 'Numero adicionado'
 
     def lookup(self, name):
